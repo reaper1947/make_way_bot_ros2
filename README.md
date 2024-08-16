@@ -97,22 +97,29 @@ Contributions are welcome! Please open an issue or submit a pull request for any
 
 # Prerequisites
 ## Software
-- Ubuntu 18.04
-- ROS Melodic
-- Python 2.7 and Python 3
+- Ubuntu 22.04
+- ROS2 Humble
+- Python & C++
 - arduino IDE
-- [MoveIt]
-- Git
+- VSCode
 ## Hardware
-
+- Raspberry Pi 4B
+- Rplidar C1
+- Battery 12v 3000mhA
+- Arduino Uno R3/Nano
+- Motor 12v with Encoder
+- Motor drive L298N
+- Toggle switch 
+- (IMU adding)
 
 
 # Clone the Repository
+Directory to your src in your workspace.
 ```
-
+git clone https://github.com/reaper1947/make_way_bot_ros2.git
 ```
 
 
 
 # Future
-Now I'm developing ROS2 with functions that are more suitable for use in real environments, such as on AMR robots.
+(coming....)

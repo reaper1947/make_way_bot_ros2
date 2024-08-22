@@ -1,0 +1,2 @@
+# Hashes of file build rules.
+dea5014ca671771ac9bcb3a71b3e7f3a CMakeFiles/nbt_bot_uninstall

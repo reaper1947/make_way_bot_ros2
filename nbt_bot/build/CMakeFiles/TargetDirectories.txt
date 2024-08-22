@@ -1,0 +1,9 @@
+/home/ter/dev_ws/src/nbt_bot/build/CMakeFiles/uninstall.dir
+/home/ter/dev_ws/src/nbt_bot/build/CMakeFiles/nbt_bot_uninstall.dir
+/home/ter/dev_ws/src/nbt_bot/build/CMakeFiles/test.dir
+/home/ter/dev_ws/src/nbt_bot/build/CMakeFiles/edit_cache.dir
+/home/ter/dev_ws/src/nbt_bot/build/CMakeFiles/rebuild_cache.dir
+/home/ter/dev_ws/src/nbt_bot/build/CMakeFiles/list_install_components.dir
+/home/ter/dev_ws/src/nbt_bot/build/CMakeFiles/install.dir
+/home/ter/dev_ws/src/nbt_bot/build/CMakeFiles/install/local.dir
+/home/ter/dev_ws/src/nbt_bot/build/CMakeFiles/install/strip.dir

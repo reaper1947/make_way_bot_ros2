@@ -1,0 +1,6 @@
+sudo apt install ros-humble-ros2-control ros-humble-ros2-controllers ros-humble-gazebo-ros2-control
+sudo apt-get install ros-humble-joint-state-publisher-gui
+sudo apt install ros-foxy-gazebo-ros-pkgs
+sudo apt-get install ros-humble-slam-toolbox
+sudo apt install ros-humble-ros2-control ros-humble-diff-drive-controller ros-humble-joint-state-broadcaster ros-humble-robot-localization
+

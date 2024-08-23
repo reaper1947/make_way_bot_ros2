@@ -1,0 +1,28 @@
+
+os: UBUNTU 22.04 jammy
+ROS2: HUMBLE
+install ROS2 by clone this git on your ubuntu >>> https://github.com/linorobot/ros2me.git <<<  
+ open terminal type >>> ./install <<< then wait ROS2 auto install by your ubuntu Version (if you use Ubuntu 22.4 this will give you install HUMBLE)
+ 
+ 	Process 
+ 	1. Make your URDF for Robot
+ 	2. Gazebo simulation
+ 	3. Hardware Wiring
+ 	4. Adding Motor
+ 	5. Adding Lidar
+ 	6. ros2_control
+ 	7. slam_toolbox and AMCL
+ 	8. nav2 
+ 	
+ Make your URDF for Robot
+ 	ไฟล์ URDF ทั้งหมดของหุ่นยนต์จะอยู่ใน /description/robot.urdf.xacro ซึ่งในไฟล์จะประกอบไปด้วย URDF ของ Chassie, Lidar, Camera, Gazebo sim, ros2_control ซึ่งทั้งหมดนั้นสามารถแก้ไขได้ใน /description 
+ 	หากต้องการจะดู URDF ที่ออกมาเป็น 3 มิติ ให้ >>> ros2 <your pkg> rsp.launch.py <<< เมื่อ launch แล้วจะส่ง topic /robot_description หลังจากนั้นให้ลองเปิด rviz2 เลือกดู TF, RobotModel (Select   
+ 	topic /robot_description) ใส่ค่าพารามิเตอร์ของหุ่นยนต์ที่สร้างขึ้นมาตามของจริงได้เลย โดยหากไปที่ robot_core.xacro ให้เปลี่ยนค่า value ต่างๆได้เลย 
+ 	**If you have 1 caster wheel you just remove one of them in my robot_core.xacro left or right and update the position your caster wheel to URDF
+ 	**If your Wheel is not showing on rviz2 just run >>> ros2 run joint_state_publisher_gui joint_state_publisher_gui <<<  
+ 	**Parameter all use meter (1 meter = 100 cm Ex. "chassis_length value= 0.30" it's mean 30 cm)
+ 	
+ Gazebo simulation
+ 	
+ 	
+ 

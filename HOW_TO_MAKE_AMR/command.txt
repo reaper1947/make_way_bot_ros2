@@ -1,0 +1,51 @@
+
+//// MOTOR TEST ////
+sudo python3 -m serial.tools.miniterm /dev/ttyACM0 57600    ---------test motor
+ros2 run joint_state_publisher_gui joint_state_publisher_gui
+ros2 launch articubot_one rsp.launch.py  use_sim_time:=true
+rviz2 -d src/articubot_one/config/view_bot.rviz
+ros2 run serial_motor_demo driver --ros-args -p serial_port:=/dev/ttyACM0 -p baud_rate:=57600 -p loop_rate:=30 -p encoder_cpr:=2250
+ros2 run serial_motor_demo gui
+
+//// OPEN RVIZ ////
+ros2 launch nbt_bot rsp.launch.py  use_sim_time:=true
+ros2 run joint_state_publisher_gui joint_state_publisher_gui
+rviz2 -d src/articubot_one/config/drive_bot.rviz
+ros2 run teleop_twist_keyboard  teleop_twist_keyboard 
+ros2 launch articubot_one launch_sim.launch.py world:=./src/articubot_one/worlds/test1.world
+
+/// LIDAR TEST ///
+ros2 run rplidar_ros rplidar_composition --ros-args -p serial_port:=/dev/ttyUSB0 -p serial_baudrate:=460800 -p frame_id:=laser_frame -p angle_compensate:=true -p scan_mode:=Standard
+ros2 launch sllidar_ros2 view_sllidar_c1_launch.py   *********
+killall rplidar_composition
+ros2 launch gazebo_ros gazebo.launch.py
+ros2 run gazebo_ros spawn_entity.py -topic robot_description -entity bot_name
+source /opt/ros/humble/setup.bash
+source install/setup.bash
+
+slam
+cp /opt/ros/humble/share/slam_toolbox/config/mapper_params_online_async.yaml ~/dev_ws/src/articubot_one/config/
+sudo apt install ros-humble-navigation2 ros-humble-nav2-bringup ros-humble-turtlebot3*
+ros2 run nav2_map_server map_server --ros-args -p yaml_filename:=my_map_save.yaml -p use_sim_time:=false
+
+ros2 run nav2_util lifecycle_bringup map_server
+ros2 run nav2_util lifecycle_bringup amcl
+
+ros2 run nav2_amcl amcl --ros-args -p use_sim_time:=true
+
+ros2 launch nav2_bringup navigation_launch.py use_sim_time:=false
+//RUN REAL_ROBOT//
+https://github.com/RedstoneGithub/diffdrive_arduino
+history | grep serial_motor_demo
+ rm -rf build/ install/ log/
+////////////////////////////////////
+ON DEV🌍️
+ros2 launch slam_toolbox online_async_launch.py slam_params_file:=./src/articubot_one/config/mapper_params_online_async.yaml use_sim_time:=false //mapping
+rviz2 -d src/articubot_one/config/main.rviz                                                                 //monitor
+ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/diff_cont/cmd_vel_unstamped   //control
+
+map_subscribe_transient_local:=true
+
+on robot 🌍️
+ros2 launch articubot_one launch_robot.launch.py 
+ros2 run rplidar_ros rplidar_composition --ros-args -p serial_port:=/dev/ttyUSB0 -p serial_baudrate:=460800 -p frame_id:=laser_frame -p angle_compensate:=true -p scan_mode:=Standard
